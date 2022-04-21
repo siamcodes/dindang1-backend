@@ -18,8 +18,8 @@ const app = express();
 // If we want to read data in (request data) we need this
 //app.use(express.json());
 
-app.use("/", express.static(__dirname + "/build"));
-app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
+//app.use("/", express.static(__dirname + "/build"));
+//app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
 // middlewares
 app.use(morgan("dev"));
