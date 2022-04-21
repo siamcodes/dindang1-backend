@@ -26,13 +26,13 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
-app.use('/api/users', userRoutes);
-app.use('/api/posts', postRoutes);
-app.use('/api/blogs', blogRoutes);
-app.use('/api/abouts', aboutRoutes);
-app.use('/api/courses', courseRoutes);
-app.use('/api/slides', slideRoutes);
-app.use('/api/persons', personRoutes);
-app.use('/api/ativities', activityRoutes);
+app.use('/users', userRoutes);
+app.use('/posts', postRoutes);
+app.use('/blogs', blogRoutes);
+app.use('/abouts', aboutRoutes);
+app.use('/courses', courseRoutes);
+app.use('/slides', slideRoutes);
+app.use('/persons', personRoutes);
+app.use('/ativities', activityRoutes);
 
 module.exports = app;
