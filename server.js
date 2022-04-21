@@ -18,21 +18,21 @@ const app = express();
 // If we want to read data in (request data) we need this
 //app.use(express.json());
 
-app.use("/", express.static(__dirname + "/build"));
-app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
+//app.use("/", express.static(__dirname + "../build"));
+//app.get("/", (req, res) => res.sendFile(__dirname + "../build/index.html"));
 
 // middlewares
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
-app.use('/users', userRoutes);
-app.use('/posts', postRoutes);
-app.use('/blogs', blogRoutes);
-app.use('/abouts', aboutRoutes);
-app.use('/courses', courseRoutes);
-app.use('/slides', slideRoutes);
-app.use('/persons', personRoutes);
-app.use('/ativities', activityRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/blogs', blogRoutes);
+app.use('/api/abouts', aboutRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/slides', slideRoutes);
+app.use('/api/persons', personRoutes);
+app.use('/api/ativities', activityRoutes);
 
 module.exports = app;
