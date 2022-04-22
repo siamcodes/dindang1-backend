@@ -1,22 +1,38 @@
-// This is where we will connect to the database
-// We need to configure the .env file as well
+// This will hold the basic express configuration
+const express = require('express');
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
-const mongoose = require('mongoose')
-const app = require('./app')
-require('dotenv').config()
+const userRoutes = require('./routes/userRoutes');
+const postRoutes = require('./routes/postRoutes');
+const blogRoutes = require('./routes/blogRoutes');
+const aboutRoutes = require('./routes/aboutRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const slideRoutes = require('./routes/slideRoutes');
+const personRoutes = require('./routes/personRoutes');
+const activityRoutes = require('./routes/activityRoutes');
 
-const uri = process.env.MONGO_URI
-const PORT = process.env.PORT
+const app = express();
 
-const connectToDatabase = async (uri, port) => {
-    try {
-        const client = await new mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        console.log(`Connected to Database: ${client.connection.host}`)
-        app.listen(PORT, () => console.log(`Server started on Port ${port}`))
-    } catch (error) {
-        console.log(`There was a problem connecting to the Database: ${error.message}`)
-    }
-} 
+// If we want to read data in (request data) we need this
+//app.use(express.json());
 
+//app.use("/", express.static(__dirname + "/build"));
+//app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
-connectToDatabase(uri, PORT)
+// middlewares
+app.use(morgan("dev"));
+app.use(bodyParser.json({ limit: "2mb" }));
+app.use(cors());
+
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/blogs', blogRoutes);
+app.use('/api/abouts', aboutRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/slides', slideRoutes);
+app.use('/api/persons', personRoutes);
+app.use('/api/ativities', activityRoutes);
+
+module.exports = app;
