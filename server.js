@@ -2,7 +2,7 @@
 // We need to configure the .env file as well
 
 const mongoose = require('mongoose')
-const app = require('./routes')
+const app = require('./app')
 require('dotenv').config()
 
 const uri = process.env.MONGO_URI
