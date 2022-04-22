@@ -3,7 +3,6 @@ const express = require('express');
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const app = express();
 
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
@@ -13,6 +12,8 @@ const courseRoutes = require('./routes/courseRoutes');
 const slideRoutes = require('./routes/slideRoutes');
 const personRoutes = require('./routes/personRoutes');
 const activityRoutes = require('./routes/activityRoutes');
+
+const app = express();
 
 // If we want to read data in (request data) we need this
 //app.use(express.json());
