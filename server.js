@@ -6,7 +6,7 @@ const app = require('./routes')
 require('dotenv').config()
 
 const uri = process.env.MONGO_URI
-const PORT = process.env.PORT || 8006
+const PORT = process.env.PORT
 
 const connectToDatabase = async (uri, port) => {
     try {
